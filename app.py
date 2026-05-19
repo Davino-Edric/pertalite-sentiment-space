@@ -80,8 +80,7 @@ iface = gr.Interface(
         ["Menteri Bahlil tidak kompeten, kebijakan Pertalite malah merugikan!"],
         ["gak ngerti knp harga bbm naik terus padahal katanya subsidi"],
     ],
-    allow_flagging="manual",
-    flagging_dir="flagged_data",
+    flagging_mode="never",
 )
 if __name__ == "__main__":
     iface.launch(server_name="0.0.0.0",server_port=7860)
