@@ -8,6 +8,7 @@ pinned: false
 license: mit
 short_description: Indonesian TikTok sentiment analysis on fuel subsidy policy
 ---
+
 # 🛢️ Pertalite Sentiment Analysis
 
 > Classifying Indonesian public opinion on fuel subsidy policy from TikTok comments using Machine Learning.
@@ -39,6 +40,7 @@ Stage 1 — Labeling (offline, training only)
       ↓
   Auto-generated sentiment labels + confidence scores
   (low-confidence samples discarded at threshold < 0.65)
+
 Stage 2 — Serving (what this app runs)
   User input
       ↓
@@ -115,3 +117,5 @@ pertalite-sentiment-space/
 **Davino Edric** — Data Science student at PENS (Politeknik Elektronika Negeri Surabaya)
 
 [![GitHub](https://img.shields.io/badge/GitHub-Davino--Edric-181717?logo=github)](https://github.com/Davino-Edric)
+pinned: false
+license: mit
