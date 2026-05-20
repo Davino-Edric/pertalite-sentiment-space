@@ -86,11 +86,32 @@ The final model is a **Random Forest + SMOTE** classifier, chosen for its balanc
 
 ---
 
-## ⚠️ Known Limitations
+## ⚠️ Known Limitations & Design Tradeoffs
 
-- **Sarcasm and implicit negativity** — The model struggles with culturally implicit insults or ironic phrasing common in Indonesian social media. TF-IDF has no understanding of sentence structure or context.
-- **Domain specificity** — Trained exclusively on Pertalite/Bahlil-related comments. Performance on other topics will degrade.
-- **Class imbalance** — Despite SMOTE, the positive class F1 (0.48) reflects the difficulty of learning from a heavily skewed dataset with only ~12% positive samples.
+This model is intentionally lightweight — TF-IDF + Random Forest with no 
+neural network at inference time. That choice enables fast cold starts, 
+free CPU-tier hosting, and a container under 200MB. The tradeoff is a 
+ceiling on what the representation can capture.
+
+**What it handles well:**
+- Clear, direct negative sentiment (F1: 0.91) — the dominant pattern in 
+  the dataset
+- Common Indonesian slang after normalization
+- High-confidence predictions on unambiguous comments
+
+**What it struggles with:**
+- Implicit negativity and sarcasm — TF-IDF has no word-order awareness, 
+  so "Bahlil tidak bagus" may score as positive because "bagus" carries 
+  strong positive weight regardless of "tidak" preceding it
+- Novel insults and out-of-vocabulary slang not in the normalization 
+  dictionary
+- Positive class recall (F1: 0.48) — a known consequence of the 88/12 
+  class imbalance that SMOTE partially but not fully corrects
+
+**The natural upgrade path** would be fine-tuning IndoBERT end-to-end on 
+this labeled dataset, which would resolve the negation and context 
+blindness at the cost of GPU compute and a significantly larger deployment 
+footprint. That tradeoff was out of scope for this project.
 
 ---
 
