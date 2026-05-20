@@ -117,5 +117,3 @@ pertalite-sentiment-space/
 **Davino Edric** — Data Science student at PENS (Politeknik Elektronika Negeri Surabaya)
 
 [![GitHub](https://img.shields.io/badge/GitHub-Davino--Edric-181717?logo=github)](https://github.com/Davino-Edric)
-pinned: false
-license: mit
